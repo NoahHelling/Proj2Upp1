@@ -6,7 +6,6 @@ function laggTillIVarukorg(produktNamn, pris) {
     item.textContent = `${produktNamn} - ${pris} kr`;
     varukorgLista.appendChild(item);
 
-    // Uppdatera totalen
     totalSumma += pris;
     uppdateraTotalSumma();
 }
@@ -20,7 +19,12 @@ document.addEventListener("DOMContentLoaded", () => {
     const produkter = [
         { namn: "Airforce 1", pris: 1200, bild: "img/AF1.jpg" },
         { namn: "Mocha Dunks", pris: 2000, bild: "img/nike.jpg" },
-        { namn: "Purple Lobster", pris: 1700, bild: "img/plobster.jpg" }
+        { namn: "Purple Lobster", pris: 1700, bild: "img/plobster.jpg" },
+        { namn: "Air Max", pris: 700, bild: "img/airmaxwebp.webp" },
+        { namn: "Reverse Mocha", pris: 1800, bild: "img/revmocha.webp" },
+        { namn: "Jordan 4 Midnight Navy", pris: 2200, bild: "img/Jordan4midnightnavy2.jpg" },
+        { namn: "NIKE SB Dunk Grateful Dead Bears Green Low", pris: 17000, bild: "img/dunkgratefuldead2.webp" },
+        { namn: "Rick Owens", pris: 3300, bild: "img/rickowens.webp" }
     ];
 
     const produktContainer = document.getElementById("produkter");
