@@ -24,7 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
         { namn: "Reverse Mocha", pris: 1800, bild: "img/revmocha.webp" },
         { namn: "Jordan 4 Midnight Navy", pris: 2200, bild: "img/Jordan4midnightnavy2.jpg" },
         { namn: "NIKE SB Dunk Grateful Dead Bears Green Low", pris: 17000, bild: "img/dunkgratefuldead2.webp" },
-        { namn: "Rick Owens", pris: 3300, bild: "img/rickowens.webp" }
+        { namn: "Rick Owens", pris: 3300, bild: "img/rickowens.webp" },
     ];
 
     const produktContainer = document.getElementById("produkter");
@@ -33,8 +33,8 @@ document.addEventListener("DOMContentLoaded", () => {
         const div = document.createElement("div");
         div.classList.add("produkt");
         div.innerHTML = `
+            <p>${produkt.namn} - ${produkt.pris} kr</p> <!-- Texten ovanför bilden -->
             <img src="${produkt.bild}" alt="${produkt.namn}">
-            <p>${produkt.namn} - ${produkt.pris} kr</p>
             <button onclick="laggTillIVarukorg('${produkt.namn}', ${produkt.pris})">Lägg till i varukorg</button>
         `;
         produktContainer.appendChild(div);

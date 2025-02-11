@@ -5,8 +5,14 @@ body {
     text-align: center;
 }
 
-header, footer {
-    background: #333;
+header {
+    background: #FF0199;  /* Färgen för headern */
+    color: white;
+    padding: 1em;
+}
+
+footer {
+    background: #00FF40;  /* Färgen för footer */
     color: white;
     padding: 1em;
 }
@@ -61,4 +67,18 @@ main {
     padding: 10px;
     background-color: #f4f4f4;
     border-radius: 5px;
+}
+
+button {
+    background-color: #00B2FF;  /* Färgen för knappen */
+    color: white;  /* Textfärg på knappen */
+    border: none;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+button:hover {
+    background-color: #0088cc;  /* En mörkare blå färg när knappen är hoverad */
 }
