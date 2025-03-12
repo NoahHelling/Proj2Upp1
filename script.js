@@ -1,19 +1,44 @@
 let totalSumma = 0;
+let varukorg = [];
 
 function laggTillIVarukorg(produktNamn, pris) {
+    varukorg.push({ namn: produktNamn, pris: pris });
+    uppdateraVarukorg();
+}
+
+function uppdateraVarukorg() {
     const varukorgLista = document.getElementById('varukorg-lista');
-    const item = document.createElement('li');
-    item.textContent = `${produktNamn} - ${pris} kr`;
-    varukorgLista.appendChild(item);
+    varukorgLista.innerHTML = '';
 
-    totalSumma += pris;
-    uppdateraTotalSumma();
+    totalSumma = 0;
+
+    varukorg.forEach((produkt, index) => {
+        const item = document.createElement('li');
+        item.textContent = `${produkt.namn} - ${produkt.pris} kr`;
+        
+        const taBortKnapp = document.createElement('button');
+        taBortKnapp.textContent = '❌';
+        taBortKnapp.style.marginLeft = '10px';
+        taBortKnapp.onclick = () => taBortFrånVarukorg(index);
+
+        item.appendChild(taBortKnapp);
+        varukorgLista.appendChild(item);
+
+        totalSumma += produkt.pris;
+    });
+
+    document.getElementById('total-summa').textContent = `Total: ${totalSumma} kr`;
 }
 
-function uppdateraTotalSumma() {
-    const summaElement = document.getElementById('total-summa');
-    summaElement.textContent = `Total summa: ${totalSumma} kr`;
+function taBortFrånVarukorg(index) {
+    varukorg.splice(index, 1);
+    uppdateraVarukorg();
 }
+
+document.getElementById('töm-varukorg').addEventListener('click', () => {
+    varukorg = [];
+    uppdateraVarukorg();
+});
 
 document.addEventListener("DOMContentLoaded", () => {
     const produkter = [
@@ -27,13 +52,13 @@ document.addEventListener("DOMContentLoaded", () => {
         { namn: "Rick Owens", pris: 3300, bild: "img/rickowens.webp" },
     ];
 
-    const produktContainer = document.getElementById("produkter");
+    const produktContainer = document.querySelector(".produkt-container");
 
     produkter.forEach(produkt => {
         const div = document.createElement("div");
         div.classList.add("produkt");
         div.innerHTML = `
-            <p>${produkt.namn} - ${produkt.pris} kr</p> <!-- Texten ovanför bilden -->
+            <p>${produkt.namn} - ${produkt.pris} kr</p>
             <img src="${produkt.bild}" alt="${produkt.namn}">
             <button onclick="laggTillIVarukorg('${produkt.namn}', ${produkt.pris})">Lägg till i varukorg</button>
         `;
